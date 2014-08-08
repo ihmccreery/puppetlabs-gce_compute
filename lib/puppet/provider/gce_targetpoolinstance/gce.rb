@@ -1,22 +1,20 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'gce'))
 
 Puppet::Type.type(:gce_targetpoolinstance).provide(
-  :gcutil,
+  :fog,
   :parent => Puppet::Provider::Gce
 ) do
 
-  commands :gcutil => 'gcutil'
-
-  def self.subcommand
-    'targetpoolinstance'
+  def self.subtype
+    superclass.connection.target_pool.add_instance
   end
 
-  def subcommand
-    self.class.subcommand
+  def subtype
+    self.class.subtype
   end
 
-  def parameter_list
-    ['instance', 'region' ]
+  def self.parameter_list
+    [:instance, :region ]
   end
 
   def destroy_parameter_list
