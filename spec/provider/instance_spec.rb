@@ -20,8 +20,8 @@ describe provider_class do
       project_name = 'test-project-9000'
       ssh_key ='username:ssh-rsa sshkeymagicstuff/goeshere ' \
         'username@some.host.name.com'
-      fog = stub('fog')
-      project = stub('project')
+      fog = double('fog')
+      project = double('project')
       project_data = double('project_data')
       project_data_hash = {'items' => [{'key' => 'foo', 'value' => 'bar'},
         {'key' => 'sshKeys', 'value' => ssh_key}], 'kind' => 'compute#metadata'}
@@ -38,8 +38,8 @@ describe provider_class do
 
     it 'returns an empty string if there are no project ssh keys' do
       project_name = 'test-project-9000'
-      fog = stub('fog')
-      project = stub('project')
+      fog = double('fog')
+      project = double('project')
       project_data = double('project_data')
       project_data_hash = {'items' => [{'key' => 'foo', 'value' => 'bar'}],
         'kind' => 'compute#metadata'}
@@ -56,8 +56,8 @@ describe provider_class do
 
     it 'caches project ssh keys even if no keys are found' do
       project_name = 'test-project-9000'
-      fog = stub('fog')
-      project = stub('project')
+      fog = double('fog')
+      project = double('project')
       project_data = double('project_data')
       project_data_hash = {'items' => [{'key' => 'foo', 'value' => 'bar'}],
         'kind' => 'compute#metadata'}
@@ -77,8 +77,8 @@ describe provider_class do
       project_name = 'test-project-9000'
       ssh_key ='username:ssh-rsa sshkeymagicstuff/goeshere ' \
         'username@some.host.name.com'
-      fog = stub('fog')
-      project = stub('project')
+      fog = double('fog')
+      project = double('project')
       project_data = double('project_data')
       project_data_hash = {'items' => [{'key' => 'foo', 'value' => 'bar'},
         {'key' => 'sshKeys', 'value' => ssh_key}], 'kind' => 'compute#metadata'}

@@ -32,12 +32,12 @@ describe provider_class do
       }
       disk_images.concat good_image_names.collect {|img|
         disk_img = double(img)
-        disk_img.stub(:name).and_return(img)
+        allow(disk_img).to receive_messages(:name => img)
         expect(disk_img).to receive(:deprecated).once.and_return(nil)
         disk_img
       }
-      images = stub('images')
-      fog = stub('fog')
+      images = double('images')
+      fog = double('fog')
       expect(fog).to receive(:images).and_return(images)
       expect(images).to receive(:all).and_return(disk_images)
       provider_class.superclass.class_variable_set(:@@connection, fog)

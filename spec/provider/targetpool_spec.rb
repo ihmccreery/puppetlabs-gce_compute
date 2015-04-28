@@ -26,9 +26,9 @@ describe provider_class do
         :ensure => :present
       }
       # create mocks for the 'create' method
-      fog = stub('fog')
-      target_pools = stub('target_pools')
-      created = stub('created')
+      fog = double('fog')
+      target_pools = double('target_pools')
+      created = double('created')
       attributes = { :description => '', :region => 'us-central1-b', :health_checks => check_one, :instances => instance_one, :session_affinity => nil, :backup_pool => nil, :fallover_ratio => nil, :async_destroy => nil, :async_create => nil }
       provider_class.superclass.class_variable_set(:@@connection, fog)
       expect(fog).to receive(:target_pools).and_return(target_pools)
