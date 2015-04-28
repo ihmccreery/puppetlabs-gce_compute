@@ -1,4 +1,4 @@
-require 'fog'
+require 'fog/google'
 require 'google/api_client'
 require 'google/api_client/auth/compute_service_account'
 
